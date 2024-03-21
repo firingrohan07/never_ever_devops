@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Users</h1>
+
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="userList">
+            <!-- User data will be inserted here dynamically using JavaScript -->
+        </tbody>
+    </table>
+
+    <a href="register.html">Register a New User</a>
+</div>
+
+<script>
+    function displayUsers() {
+    const userList = document.getElementById('userList');
+    userList.innerHTML = '';
+
+    // Retrieve users from localStorage
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    users.forEach(user => {
+        const row = userList.insertRow();
+        row.innerHTML = `<td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>`;
+    });
+}
+
+displayUsers(); // Initial display of users
+
+</script>
+</body>
+</html>

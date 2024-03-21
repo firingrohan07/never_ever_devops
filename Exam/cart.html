@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    <h1>Cart</h1>
+    <div id="cart">
+        <!-- Cart items will be dynamically added here -->
+    </div>
+    <p>Total: <span id="total">$0.00</span></p>
+    <button onclick="proceedToCheckout()">Proceed to Checkout</button>
+
+    <script>
+        // Function to display items in the cart and calculate total price
+        window.onload = function() {
+            const cart = document.getElementById('cart');
+            const totalSpan = document.getElementById('total');
+            let totalPrice = 0;
+
+            // Sample cart items (replace with actual cart items from localStorage)
+            const cartItems = [
+                { name: "Product 1", price: 10 },
+                { name: "Product 2", price: 20 },
+                { name: "Product 3", price: 30 }
+            ];
+
+            cartItems.forEach(item => {
+                cart.innerHTML += `<div>${item.name} - $${item.price}</div>`;
+                totalPrice += item.price;
+            });
+
+            totalSpan.textContent = `$${totalPrice.toFixed(2)}`;
+        };
+
+        // Function to proceed to checkout
+        function proceedToCheckout() {
+            // Implement your checkout logic here
+            alert('Proceeding to checkout...');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Registration</h1>
+
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <button type="button" id="addButton" onclick="addUser()">Add User</button>
+    </form>
+
+    <a href="display.html" target="_blank">Display Users</a>
+</div>
+
+<script>
+    function addUser() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+
+    // Retrieve existing users from localStorage or initialize an empty array
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+
+    const user = {
+        id: users.length + 1,
+        name: name,
+        email: email
+    };
+
+    users.push(user);
+
+    // Store the updated users array back in localStorage
+    localStorage.setItem('users', JSON.stringify(users));
+
+    resetForm();
+}
+
+</script>
+</body>
+</html>
